@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>损失厌恶心理学实验</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .game-container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .buttons-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .choice-btn {
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .choice-btn:hover {
+            background-color: #2980b9;
+        }
+        .choice-btn:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+        #balance-display {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        #result-output {
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        #chart-container {
+            margin: 20px 0;
+        }
+        .hidden {
+            display: none;
+        }
+        #data-form {
+            margin-top: 30px;
+        }
+        .consent-checkbox {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>损失厌恶心理学实验</h1>
+    
+    <div class="game-container">
+        <div id="balance-display">当前余额: 1000元</div>
+        <div id="result-output">点击开始按钮开始实验</div>
+        <div id="chart-container">
+            <canvas id="balance-chart"></canvas>
+        </div>
+        <button id="start-btn" class="choice-btn">开始实验</button>
+        <div id="choice-buttons" class="buttons-container hidden">
+            <button class="choice-btn" data-choice="0">选择A: 50%赢得200元</button>
+            <button class="choice-btn" data-choice="1">选择B: 100%赢得100元</button>
+            <button class="choice-btn" data-choice="2">选择C: 50%损失200元</button>
+            <button class="choice-btn" data-choice="3">选择D: 100%损失100元</button>
+        </div>
+    </div>
+
+    <!-- 数据收集同意表单 -->
+    <div id="consent-form" class="hidden">
+        <h2>数据提交</h2>
+        <p>实验已完成！您可以选择提交您的匿名实验数据以帮助心理学研究。</p>
+        <div class="consent-checkbox">
+            <input type="checkbox" id="consent-checkbox">
+            <label for="consent-checkbox">我同意提交匿名实验数据</label>
+        </div>
+        <button id="submit-data-btn" disabled>提交数据</button>
+    </div>
+
+    <!-- 隐藏的GitHub Issues表单 -->
+    <form id="data-form" class="hidden" 
+          action="https://github.com/mynameisczj/htmlgame/issues" 
+          method="get" 
+          target="_blank">
+        <input type="hidden" name="title" id="issue-title">
+        <input type="hidden" name="body" id="issue-body">
+        <input type="hidden" name="labels" value="experiment-data">
+    </form>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
