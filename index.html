@@ -70,14 +70,22 @@
         .consent-checkbox {
             margin: 15px 0;
         }
+        #loading-message {
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
+    <div id="loading-message">游戏加载中，请稍候...</div>
+    
     <h1>损失厌恶心理学实验</h1>
     
     <div class="game-container">
         <div id="balance-display">当前余额: 1000元</div>
-        <div id="result-output">点击开始按钮开始实验</div>
+        <div id="result-output">准备开始实验</div>
         <div id="chart-container">
             <canvas id="balance-chart"></canvas>
         </div>
@@ -98,7 +106,7 @@
             <input type="checkbox" id="consent-checkbox">
             <label for="consent-checkbox">我同意提交匿名实验数据</label>
         </div>
-        <button id="submit-data-btn" disabled>提交数据</button>
+        <button id="submit-data-btn" class="choice-btn" disabled>提交数据</button>
     </div>
 
     <!-- 隐藏的GitHub Issues表单 -->
@@ -111,6 +119,7 @@
         <input type="hidden" name="labels" value="experiment-data">
     </form>
 
-    <script src="./js/game.js"></script>
+    <!-- 使用相对路径加载JS文件 -->
+    <script src="js/game.js"></script>
 </body>
 </html>
